@@ -1,14 +1,17 @@
+import { headers } from "next/headers";
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
-import { useSession } from "~/lib/auth-client";
+import { auth } from "~/lib/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await useSession();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  if (session?.data?.user) {
+  if (session?.user) {
     void api.post.getLatest.prefetch();
   }
 
@@ -61,7 +64,7 @@ export default async function Home() {
             </div>
           </div>
 
-          {session?.data?.user && <LatestPost />}
+          {session?.user && <LatestPost />}
         </div>
       </main>
     </HydrateClient>
