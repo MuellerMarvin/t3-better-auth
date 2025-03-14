@@ -21,7 +21,6 @@ import { Input } from "~/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { auth } from "~/lib/auth";
 import { authClient } from "~/lib/auth-client";
 
 const formSchema = z.object({
@@ -50,13 +49,11 @@ export function LoginForm({
       name: values.email,
     });
 
+    console.log("Response", data);
+
     if (error) {
       console.error(error);
     }
-  }
-
-  function handleGoogleLogin() {
-    console.log("Google login");
   }
 
   return (
