@@ -1,20 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "~/lib/auth";
-import { headers } from "next/headers";
+import { getSessionCookie } from "better-auth/cookies";
 
 export async function middleware(request: NextRequest) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
+  const sessionCookie = getSessionCookie(request, {
+    // Optionally pass config if cookie name, prefix or useSecureCookies option is customized in auth config.
+    cookieName: "session_token",
+    cookiePrefix: "better-auth",
+    useSecureCookies: true,
   });
 
-  if (!session) {
-    return NextResponse.redirect(new URL("/sign-in", request.url));
+  if (!sessionCookie) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  runtime: "nodejs",
-  matcher: ["/"], // Apply middleware to specific routes
+  matcher: ["/"], // Specify the routes the middleware applies to
 };
