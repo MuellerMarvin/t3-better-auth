@@ -28,7 +28,7 @@ export function DeleteAccountForm({
             <div className="grid gap-6">
               <DeleteAccountDialog>
                 <Button type="submit" className="w-full" variant="destructive">
-                  Delete your account
+                  Delete your account :(
                 </Button>
               </DeleteAccountDialog>
             </div>
