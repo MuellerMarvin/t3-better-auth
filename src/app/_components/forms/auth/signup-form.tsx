@@ -22,7 +22,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
-import { auth } from "~/lib/auth";
 import { redirect } from "next/navigation";
 
 const formSchema = z.object({
