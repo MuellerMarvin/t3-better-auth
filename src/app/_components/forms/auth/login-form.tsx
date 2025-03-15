@@ -45,7 +45,9 @@ export function LoginForm({
   });
 
   const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setError(null);
     setProcessing(true);
     const { data, error } = await authClient.signIn.email({
       email: values.email,
@@ -59,6 +61,7 @@ export function LoginForm({
 
     if (error) {
       console.error(error);
+      setError(error.message ?? "An unknown error occurred.");
     }
   }
 
@@ -120,7 +123,9 @@ export function LoginForm({
                       name="password"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Password</FormLabel>
+                          <FormLabel className={cn(error && "text-red-500")}>
+                            Password
+                          </FormLabel>
                           <FormControl>
                             <Input
                               {...field}
@@ -133,7 +138,10 @@ export function LoginForm({
                           <FormDescription>
                             Enter your password to login
                           </FormDescription>
-                          <FormMessage />
+                          {!error && <FormMessage />}
+                          {error && (
+                            <p className="text-sm text-red-500">{error}</p>
+                          )}
                         </FormItem>
                       )}
                     />
