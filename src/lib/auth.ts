@@ -14,6 +14,17 @@ export const auth = betterAuth({
   user: {
     deleteUser: {
       enabled: true,
+      beforeDelete: async ({ id }) => {
+        await prisma.post.updateMany({
+          where: {
+            createdById: id,
+          },
+          data: {
+            createdById: undefined,
+            name: "Deleted User",
+          },
+        });
+      },
     },
   },
   plugins: [nextCookies()],
