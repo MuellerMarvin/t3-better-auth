@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
 import { auth } from "~/lib/auth";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -51,10 +52,10 @@ export function SignUpForm({
       password: values.password,
     });
 
-    console.log("Response", data);
-
     if (error) {
       console.error(error);
+    } else {
+      redirect("/");
     }
   }
 
