@@ -1,8 +1,9 @@
 {
-  "name": "summercamp",
+  "name": "t3-better-auth-template",
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "author": "Marvin Müller",
   "scripts": {
     "build": "next build",
     "check": "next lint && tsc --noEmit",
