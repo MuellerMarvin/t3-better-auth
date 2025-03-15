@@ -8,9 +8,9 @@ export default function SignInSignOutButton() {
 
   return (
     <button
-      onClick={() => {
+      onClick={async () => {
         if (session) {
-          authClient.signOut();
+          await authClient.signOut();
           window.location.reload();
         } else {
           redirect("/auth/signin");

@@ -1,13 +1,7 @@
 "use client";
 import { cn } from "~/lib/utils";
 import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Form,
   FormControl,
@@ -23,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
 import { useState } from "react";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -42,7 +37,7 @@ export function PasswordResetForm({
   const [success, setSuccess] = useState(false);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { data, error } = await authClient.forgetPassword({
+    const { error } = await authClient.forgetPassword({
       email: values.email,
     });
 
@@ -126,9 +121,9 @@ function Success() {
         Please check your email for instructions on resetting your password.
       </p>
       <div className="text-center text-sm">
-        <a href="/" className="underline underline-offset-4">
+        <Link href="/" className="underline underline-offset-4">
           Return home
-        </a>
+        </Link>
       </div>
     </div>
   );

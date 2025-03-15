@@ -22,7 +22,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
-import { auth } from "~/lib/auth";
 import { useState } from "react";
 
 const formSchema = z.object({
@@ -80,8 +79,8 @@ export function LoginForm({
                   <Button
                     variant="outline"
                     className="w-full"
-                    onClick={() => {
-                      authClient.signIn.social({
+                    onClick={async () => {
+                      await authClient.signIn.social({
                         provider: "google",
                         callbackURL: "/",
                       });

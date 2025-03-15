@@ -1,5 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -100,9 +101,9 @@ export function DeleteAccountForm({
             </div>
             <div className="text-center text-sm">
               Changed your mind ?{" "}
-              <a className="underline underline-offset-4" href="/">
+              <Link className="underline underline-offset-4" href="/">
                 Go back
-              </a>
+              </Link>
             </div>
           </div>
         </CardContent>

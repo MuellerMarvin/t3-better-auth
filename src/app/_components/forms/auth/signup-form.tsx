@@ -1,13 +1,7 @@
 "use client";
 import { cn } from "~/lib/utils";
 import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Form,
   FormControl,
@@ -45,7 +39,7 @@ export function SignUpForm({
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { data, error } = await authClient.signUp.email({
+    const { error } = await authClient.signUp.email({
       name: values.email,
       email: values.email,
       password: values.password,
@@ -72,8 +66,8 @@ export function SignUpForm({
                   <Button
                     variant="outline"
                     className="w-full"
-                    onClick={() => {
-                      authClient.signIn.social({
+                    onClick={async () => {
+                      await authClient.signIn.social({
                         provider: "google",
                         callbackURL: "/",
                       });
