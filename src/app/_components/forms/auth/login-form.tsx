@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
 import { auth } from "~/lib/auth";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -43,13 +44,16 @@ export function LoginForm({
     },
   });
 
+  const [processing, setProcessing] = useState(false);
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setProcessing(true);
     const { data, error } = await authClient.signIn.email({
       email: values.email,
       password: values.password,
       rememberMe: true,
       callbackURL: "/",
     });
+    setProcessing(false);
 
     console.log("Response", data);
 
@@ -142,7 +146,11 @@ export function LoginForm({
                       </a>
                     </div>
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button
+                    disabled={processing}
+                    type="submit"
+                    className="w-full"
+                  >
                     Login
                   </Button>
                 </div>
