@@ -5,6 +5,7 @@ import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/lib/auth";
 import { api, HydrateClient } from "~/trpc/server";
 import SignInSignOutButton from "./_components/signin-signout-button";
+import { Button } from "~/components/ui/button";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -65,6 +66,13 @@ export default async function Home() {
           <p className="text-center text-2xl text-white">
             {session && api.post.getSecretMessage()}
           </p>
+        </div>
+        <div>
+          {session && (
+            <a href="/auth/delete">
+              <Button variant="destructive">Delete Account</Button>
+            </a>
+          )}
         </div>
       </main>
     </HydrateClient>
