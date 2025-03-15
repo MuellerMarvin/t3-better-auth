@@ -22,6 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { authClient } from "~/lib/auth-client";
+import { auth } from "~/lib/auth";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -43,10 +44,10 @@ export function LoginForm({
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { data, error } = await authClient.signUp.email({
+    const { data, error } = await authClient.signIn.email({
       email: values.email,
       password: values.password,
-      name: values.email,
+      rememberMe: true,
     });
 
     console.log("Response", data);
@@ -78,8 +79,8 @@ export function LoginForm({
                     Login with Google
                   </Button>
                 </div>
-                <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                  <span className="bg-background text-muted-foreground relative z-10 px-2">
+                <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+                  <span className="relative z-10 bg-background px-2 text-muted-foreground">
                     Or continue with
                   </span>
                 </div>
@@ -147,7 +148,7 @@ export function LoginForm({
                 <div className="text-center text-sm">
                   Don&apos;t have an account?{" "}
                   <a
-                    href="#"
+                    href="/auth/signup"
                     className="underline underline-offset-4"
                     // TODO: Add sign up link
                   >
@@ -159,7 +160,7 @@ export function LoginForm({
           </Form>
         </CardContent>
       </Card>
-      <div className="text-muted-foreground [&_a]:hover:text-primary text-balance text-center text-xs [&_a]:underline [&_a]:underline-offset-4">
+      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </div>
