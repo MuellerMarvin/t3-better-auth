@@ -4,7 +4,7 @@ import Link from "next/link";
 import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/lib/auth";
 import { api, HydrateClient } from "~/trpc/server";
-import SignInSignOutButton from "./_components/forms/auth/signin-signout-button";
+import SignInSignOutButton from "./_components/signin-signout-button";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
