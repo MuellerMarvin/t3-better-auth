@@ -135,7 +135,7 @@ export function LoginForm({
                     />
                     <div className="flex items-center">
                       <a
-                        href="#" // TODO: Add forgot password link
+                        href="/auth/reset"
                         className="ml-auto text-sm underline-offset-4 hover:underline"
                       >
                         Forgot your password?
