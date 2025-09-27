@@ -1,13 +1,12 @@
 import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
-import { PrismaClient } from "@prisma/client";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { env } from "~/env";
+import { db } from "~/lib/server/db";
 
-const prisma = new PrismaClient();
 export const auth = betterAuth({
-  database: prismaAdapter(prisma, {
-    provider: "postgresql",
+  database: drizzleAdapter(db, {
+    provider: "pg",
   }),
   socialProviders: {
     google: {
@@ -22,16 +21,12 @@ export const auth = betterAuth({
   user: {
     deleteUser: {
       enabled: true,
-      beforeDelete: async ({ id }) => {
-        await prisma.post.updateMany({
-          where: {
-            createdById: id,
-          },
-          data: {
-            createdById: undefined,
-            name: "Deleted User",
-          },
-        });
+      beforeDelete: async (
+        {
+          /* id */
+        },
+      ) => {
+        // TODO: Add your own logic to delete the user, including their owned resources
       },
     },
   },
