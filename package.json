@@ -81,8 +81,10 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@next/eslint-plugin-next": "^15.5.4",
     "@tailwindcss/postcss": "^4.1.13",
-    "@types/eslint": "^8.56.12",
+    "@types/eslint": "^9.6.1",
     "@types/node": "^24.5.2",
     "@types/pg": "^8.15.5",
     "@types/react": "^19.1.14",
@@ -90,14 +92,16 @@
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "drizzle-kit": "^0.31.5",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^15.5.3",
+    "eslint": "^9.36.0",
+    "eslint-config-next": "^15.5.4",
+    "eslint-plugin-drizzle": "^0.2.3",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.13",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.1"
   },
   "ct3aMetadata": {
     "initVersion": "7.38.1"
