@@ -4,14 +4,16 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 ## What's next? How do I make an app with this?
 
-This was originally a create-t3 template with Prisma.
-Meanwhile the following changes (and more) were made:
-- Switch to Drizzle
+This was originally a create-t3 template using NextAuth and Prisma.
+## Following changes were made:
+- Switch from NextAuth to BetterAuth
+- Switch from Prisma to Drizzle
 - Upgrade to Tailwind V4
-- Add basic login and signup pages
 - Add all shadcn-ui components
+- Add basic login and signup pages
 - Clear out template to use shadcn components from the start
 
+## Stack:
 - [Next.js](https://nextjs.org)
 - [BetterAuth](https://better-auth.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
