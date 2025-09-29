@@ -1,4 +1,4 @@
-# Create T3 App x BetterAuth x ShadCn/UI
+# Create T3 App x BetterAuth x shadcn/ui
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and enhanced with [better-auth](https://better-auth.com/).
 
