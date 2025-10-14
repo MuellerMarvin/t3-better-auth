@@ -2,7 +2,11 @@ import { desc } from "drizzle-orm";
 import { posts } from "~/db/schema";
 import { z } from "zod";
 
-import { createTRPCRouter, protectedProcedure } from "~/lib/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "~/lib/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
   create: protectedProcedure
@@ -26,7 +30,7 @@ export const postRouter = createTRPCRouter({
     return latestPostResult[0] ?? null;
   }),
 
-  hello: protectedProcedure
+  hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
       return {
