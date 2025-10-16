@@ -2,9 +2,13 @@
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and enhanced with [better-auth](https://better-auth.com/).
 
+This template might change in the future and become less and less barebone.
+
 ## What's next? How do I make an app with this?
 
 This was originally a create-t3 template using NextAuth and Prisma.
+To use this simply go to the top of the GitHub page and click on "Use this template" and name your own repo.
+
 ## Following changes were made:
 - Switch from NextAuth to BetterAuth
 - Switch from Prisma to Drizzle
