@@ -1,11 +1,10 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/inDU_S?utm_medium=integration&utm_source=template&utm_campaign=generic)
+
 # Create T3 App x BetterAuth x shadcn/ui
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and enhanced with [better-auth](https://better-auth.com/).
 
 This template might change in the future and become less and less barebone.
-
-## Deploy this template on Railway.com
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/inDU_S?utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 ## What's next? How do I make an app with this?
 
