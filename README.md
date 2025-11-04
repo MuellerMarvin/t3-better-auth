@@ -11,10 +11,10 @@ To use this simply go to the top of the GitHub page and click on "Use this templ
 
 ## Following changes were made:
 - Switch from NextAuth to BetterAuth
+- Beautiful Ready-to-Use email+password + GoogleOAuth auth pages (Login, Signup, Reset Password forms, Verification)
 - Switch from Prisma to Drizzle
 - Upgrade to Tailwind V4
 - Add all shadcn-ui components
-- Add basic login and signup pages
 - Clear out template to use shadcn components from the start
 
 ## Stack:
