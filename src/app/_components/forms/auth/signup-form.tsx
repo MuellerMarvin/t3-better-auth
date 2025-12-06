@@ -42,7 +42,7 @@ export function SignUpForm({
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { error } = await authClient.signUp.email({
-      name: values.email,
+      name: values.name,
       email: values.email,
       password: values.password,
       callbackURL: searchParams.get("redirect") ?? "",
