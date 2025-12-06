@@ -37,7 +37,7 @@ export function PasswordResetForm({
   const [success, setSuccess] = useState(false);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { error } = await authClient.forgetPassword({
+    const { error } = await authClient.requestPasswordReset({
       email: values.email,
     });
 
@@ -105,7 +105,7 @@ export function PasswordResetForm({
           </Form>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
+      <div className="text-muted-foreground hover:[&_a]:text-primary text-center text-xs text-balance [&_a]:underline [&_a]:underline-offset-4">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </div>
@@ -117,7 +117,7 @@ function Success() {
   return (
     <div className="flex flex-col items-center justify-center gap-6">
       <h1 className="text-2xl font-bold">Password reset email sent ✅</h1>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Please check your email for instructions on resetting your password.
       </p>
       <div className="text-center text-sm">
